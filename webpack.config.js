@@ -22,6 +22,13 @@ module.exports = {
                         loader: 'css-loader'
                     }
                 ]
+            },
+            {
+                test: /\.(png|jpg|gif)/,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'img/[name][ext]'
+                }
             }
         ]
     },
