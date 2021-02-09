@@ -1,4 +1,14 @@
 h1 {
-    color: blue;
-}
+  color: blue; }
+
+.content {
+  -webkit-appearance: radio;
+     -moz-appearance: radio;
+          appearance: radio;
+  margin-right: 16px; }
+  .content .title, .content .title-lg {
+    color: orange;
+    font-size: 24px; }
+  .content .title-lg {
+    font-size: 32px; }
 
