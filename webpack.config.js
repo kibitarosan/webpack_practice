@@ -5,6 +5,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 
 module.exports = {
+    mode: 'development',
+    target: ['web', 'es5'],
+    devtool: false,
     entry: './src/js/main.js',
     output: {
         path: path.resolve(__dirname, './dist'),
@@ -12,6 +15,25 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.js/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                [
+                                    '@babel/preset-env',
+                                    {
+                                        'targets': '> 0.25%, not dead'
+                                    }
+                                ]
+                            ]
+                        }
+                    }
+                ]
+            },
             {
                 test: /\.(css|sass|scss)/,
                 use: [
