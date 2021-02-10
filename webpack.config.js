@@ -7,7 +7,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     mode: 'development',
     target: ['web', 'es5'],
-    devtool: false,
+    devtool: 'source-map',
     entry: './src/js/main.js',
     output: {
         path: path.resolve(__dirname, './dist'),
@@ -41,7 +41,10 @@ module.exports = {
                         loader: MiniCssExtractPlugin.loader
                     },
                     {
-                        loader: 'css-loader'
+                        loader: 'css-loader',
+                        options: {
+                            // sourceMap: true
+                        }
                     },
                     {
                         loader: 'postcss-loader'
