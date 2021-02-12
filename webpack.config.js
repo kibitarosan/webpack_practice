@@ -7,11 +7,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     mode: 'development',
     target: ['web', 'es5'],
-    devtool: 'source-map',
+    // devtool: 'source-map',
     entry: './src/js/main.js',
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: './js/main.js'
+        filename: 'js/main.js',
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -55,11 +56,22 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpg|gif)/,
+                test: /\.(png|jpg|jpeg|gif)/,
                 type: 'asset/resource',
                 generator: {
                     filename: 'img/[name][ext]'
-                }
+                },
+                use: [
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: {
+                                progressive: true,
+                                quality: 65,
+                            }
+                        }
+                    }
+                ]
             },
             {
                 test:/\.pug/,
